@@ -15,13 +15,17 @@ public class ConnectBDD {
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-				String BDD = "projettwic";
-				String url = "jdbc:mysql://localhost:3306/" + BDD;
-				String user = "root";
-				String passwd = "";
+				String BDD = "postgres";
+				String url = "jdbc:postgresql://localhost:5432/" + BDD;
+				//jdbc:postgresql://localhost:5432/sonarqube
+				//Suppression de ":3306" dans l' URL après localhost et ajout des paramètres après BDD.
+				
+				String user = "postgres";
+				String passwd = "postgres";
 
 				try {
-				    Class.forName("com.mysql.cj.jdbc.Driver");
+				    Class.forName("org.postgresql.Driver");
+				    
 				    Connection conn = DriverManager.getConnection(url, user, passwd);
 				    System.out.println("Connecter");
 				    
